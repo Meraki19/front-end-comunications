@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .dot {
+    height: 30px;
+    width: 30px;
+    background: #cdcdcd;
+    border:1px solid grey;
+    border-radius: 50%;
+    position:relative
+    }
+ 
+    img {
+        position: absolute;
+    width: 18px;
+    height: auto;
+    top: 6px;
+    left: 6px;
+    }
+    .stock-event {
+        display: flex;
+        
+    }
+    .line {
+        width: 2px;
+    top: 30px;
+    height: 150px;
+    background: grey;
+    position: relative;
+    left: 14px;
+    }
+    .details{
+        margin-left: 20px;
+    }
+    h1,h2,h3,h4,h5,h6 {margin:0}
+</style>
+<body>
+    <script defer>
+        console.log('ts')
+        const streamingEvent = new EventSource('http://localhost:3003/live-stream')
+        streamingEvent.onmessage= (event)=> {
+        let dot = document.createElement('div')
+        let stockimg=document.createElement('img')
+        stockimg.src="./assets/stock.png"
+        stockimg.className='stock-img'
+        dot.className="dot"
+         let line=document.createElement('div')
+         line.className="line"
+         dot.append(line,stockimg)
+       
+         let liveStockData = JSON.parse(event.data)
+         const h2= document.createElement('h2')
+         h2.textContent=liveStockData.symbol
+         const h4= document.createElement('h4')
+         h4.textContent=liveStockData.price
+         const h5= document.createElement('h5')
+         h5.textContent=liveStockData.change
+         const time= document.createElement('p')
+         time.className = 'time'
+         time.textContent=liveStockData.timestamp
+         const note= document.createElement('p')
+         note.className='comment'
+         note.textContent=liveStockData.note
+      
+         const details = document.createElement('div')
+        details.className="details"
+         details.append(h2,h4,h5,time,note)
+         const stockevent = document.querySelector('.stock-event')
+         const parentel= document.createElement('div')
+         parentel.classList.add('stock-data','stock-data-animation')
+         parentel.append(dot,details)
+        document.querySelector('.container').append(parentel)
+        }
+    streamingEvent.onerror=(err)=>{
+        console.log(err)
+    }
+    </script> 
+    <div class="container"> 
+    
+   
+        </div>
+   
+</body>
+</html>

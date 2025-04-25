@@ -7,6 +7,7 @@
     "start:longPooling": "nodemon ./long_pooling/index.js",
     "start:shortPooling": "nodemon ./short_pooling/index.js",
     "start:websocket": "nodemon ./websocket/server/index.js",
+    "start:sse": "nodemon ./server_sent-events/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

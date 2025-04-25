@@ -1,0 +1,38 @@
+[
+    {
+      "symbol": "AAPL",
+      "price": 171.25,
+      "change": 0.42,
+      "timestamp": "2025-04-25T10:00:00Z",
+      "note": "Price increase due to positive earnings report."
+    },
+    {
+      "symbol": "AAPL",
+      "price": 171.89,
+      "change": -2.34,
+      "timestamp": "2025-04-25T10:00:01Z",
+      "note": "Price drop due to a product recall."
+    },
+    {
+      "symbol": "AAPL",
+      "price": 169.45,
+      "change": -2.44,
+      "timestamp": "2025-04-25T10:00:02Z",
+      "note": "Price drop after competitor's new release."
+    },
+    {
+      "symbol": "AAPL",
+      "price": 172.60,
+      "change": 3.15,
+      "timestamp": "2025-04-25T10:00:03Z",
+      "note": "Price increase due to strong Q1 results."
+    },
+    {
+      "symbol": "AAPL",
+      "price": 170.22,
+      "change": -2.38,
+      "timestamp": "2025-04-25T10:00:04Z",
+      "note": "Price drop following market-wide correction."
+    }
+  ]
+  
