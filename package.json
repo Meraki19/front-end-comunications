@@ -1,0 +1,21 @@
+{
+  "name": "communication",
+  "version": "1.0.0",
+  "description": "Tutorial on differnet communication set up",
+  "main": "index.js",
+  "scripts": {
+    "start:longPooling": "nodemon ./long_pooling/index.js",
+    "start:shortPooling": "nodemon ./short_pooling/index.js",
+    "start:websocket": "nodemon ./websocket/server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

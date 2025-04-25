@@ -1,0 +1,35 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Communciation </h1>
+    <div id="notification-container">🔔</div>
+        <button onclick="clearNotificationTimeInterval()">stop notification</button>
+</body>
+<script>
+    fetchNotification = async () => {
+        const res = await fetch('/getData')
+        const data = await res.json()
+        console.log(data.messgae)
+        if (data) {
+            let container = document.getElementById('notification-container')
+            let newnotification = document.createElement('p')
+            newnotification.innerText = data.messgae
+            container.append(newnotification)
+        }
+    }
+   let timeinterval= setInterval(() => {
+        fetchNotification()
+    }, 3000)
+
+    function clearNotificationTimeInterval() {
+        clearInterval(timeinterval)
+    }
+</script>
+
+</html>

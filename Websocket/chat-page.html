@@ -1,0 +1,215 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<style>
+    @font-face {
+        font-family: 'Roboto';
+        src: url('./assets/Roboto-VariableFont_wdth\,wght.ttf');
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0
+    }
+
+    #loged-in-user {
+        text-align: center;
+        text-transform: uppercase;
+        color: #546eae;
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+    }
+
+    .chat-details {
+        flex: 1;
+        background-color: white;
+        border-right: 2px solid #dfe2eb;
+    }
+
+    ul.chat-content {
+        display: flex;
+        gap: 10;
+        flex-direction: column;
+    }
+
+    ul.chat-content li {
+        list-style: none;
+
+        border-radius: 15px;
+        font-size: 18px;
+        margin-bottom: 10px;
+        width: 40%;
+        line-height: 1.25em;
+        padding: 10px 20px;
+
+    }
+
+    ul.chat-content li.sent-message {
+        color: white;
+        background: #4aa892;
+        align-self: flex-end;
+    }
+
+    ul.chat-content li.received-message {
+        color: white;
+        background-color: #004872a3;
+    }
+
+    #chat-panel-container {
+        position: relative;
+        flex: 4;
+        flex-basis: 20%;
+        padding: 20px;
+        background: #eef0f6;
+    }
+
+    .message-box {
+        border: 1px solid #ced4da;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        width: 80%;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    form {
+        display: flex;
+        justify-content: center;
+    }
+
+    .message-input {
+        height: 80px;
+        display: block;
+        border: none;
+        width: 100%;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border-radius: 10px;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+    .send-cta-container {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .selected-contact {
+        background: #d1d9ef;
+        margin: 0;
+        padding: 20px;
+        text-transform: capitalize;
+        border-radius: 20px;
+    }
+
+    .send-cta {
+        height: 60px;
+        width: 60px;
+        border-radius: 15px;
+        background: #05a588;
+        border-color: #05a588;
+        box-shadow: none;
+        border: none;
+    }
+
+    .contact-list {
+        padding: 0 10px;
+    }
+
+    .contact-list p {
+        padding: 10px;
+        height: 30px;
+        margin: 10px 0;
+        border-radius: 15px;
+        border: 1px solid #ced4da;
+    }
+
+    .send-cta:hover,
+    .contact-list p:hover {
+        cursor: hand;
+    }
+
+    #search-input {
+        width: 100%;
+        height: 38px;
+        border-radius: 10px;
+        border: 1px solid #ced4da;
+        padding: 8px;
+    }
+
+    .logged-in-user-details img {
+        height: 80px;
+        width: auto;
+    }
+
+    .logged-in-user-details {
+        padding: 30px 10px;
+        background: #8b9bc8;
+        height: 200px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .current-status {
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        background: grey;
+        border-radius: 50%;
+        float: right;
+        top: 8px;
+        position: relative;
+
+    }
+
+    .status-text {
+        display: block;
+        font-size: 12px;
+        padding-top: 3px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="chat-details">
+            <div class="logged-in-user-details">
+                <img src="./assets/avatar.png" />
+                <h3 id="loged-in-user"></h3>
+                <div class="search-panel">
+                    <input type="text" id="search-input" oninput="searchContact(event)" placeholder="Search...">
+                </div>
+            </div>
+            <div onclick="handleContactSelection(event)" class="contact-list">
+            </div>
+        </div>
+        <div id="chat-panel-container">
+            <div id="selected-contact">
+
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script>const socket = io()</script>
+<script src="./scripts/chat-page-controller.js"></script>
+<script src="./scripts/element-creator.js"></script>
+<script src="./scripts/chat-page.js"></script>
+<script src="./scripts/profile-setup.js"></script>
+
+</html>
